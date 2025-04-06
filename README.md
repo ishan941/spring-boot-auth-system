@@ -33,3 +33,29 @@ A Spring Boot-based authentication and authorization system using:
 git clone https://github.com/your-username/spring-boot-auth-system.git
 cd spring-boot-auth-system
 ```
+
+### 2. Configure Database
+
+```java
+spring.datasource.url=jdbc:postgresql://localhost:5432/your db
+spring.datasource.username=postgres
+spring.datasource.password=yourpassword
+
+jwt.secret=yourSecretKey
+
+```
+
+### 3. Run the project
+
+```bash
+mvn clean install
+mvn spring-boot:run
+```
+
+### 4. API Testing
+
+Use Postman or cURL to test endpoints:
+
+POST /api/v1/auth-service/register
+
+POST /api/v1/auth-service/authenticate
