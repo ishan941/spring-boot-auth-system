@@ -59,3 +59,17 @@ Use Postman or cURL to test endpoints:
 POST /api/v1/auth-service/register
 
 POST /api/v1/auth-service/authenticate
+
+### 📂 Folder Structure
+
+```
+src/
+├── config/
+├── controller/
+├── dto/
+├── entity/
+├── repository/
+├── security/
+├── service/
+└── util/
+```

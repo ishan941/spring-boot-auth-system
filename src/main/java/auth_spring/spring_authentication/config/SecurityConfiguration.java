@@ -27,17 +27,21 @@ public class SecurityConfiguration {
                 http.csrf(AbstractHttpConfigurer::disable)
                                 .authorizeHttpRequests(request -> request
                                                 .requestMatchers(
-                                                                "/api/v1/auth-service/**",
-                                                                "/instances")
-                                                .permitAll()
-                                                .anyRequest().authenticated())
+                                                                "/api/v1/auth-service/**", // Allow auth routes
+                                                                "/instances", // Allow instances route
+                                                                "/swagger-ui/**", // Allow Swagger UI
+                                                                "/v3/api-docs/**" // Allow Swagger docs
+                                                ).permitAll()
+                                                .anyRequest().authenticated()) // Other requests require authentication
 
                                 .sessionManagement(manager -> manager
-                                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless
+                                                                                                         // session (no
+                                                                                                         // cookie //
+                                                                                                         // JWT)
                                 .authenticationProvider(authenticationProvider)
                                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
                 return http.build();
         }
-
 }
